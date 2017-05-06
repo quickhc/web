@@ -43,7 +43,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
             @Override
             public void onClick(View v) {
 //                toActivity(LinePathActivity.class);
-                toActivity(RecycleActivity.class);
+                toActivity(LinePathActivity.class);
             }
         });
     }

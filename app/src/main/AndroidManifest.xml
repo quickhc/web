@@ -25,6 +25,7 @@
         <activity android:name=".activity.LinePathActivity"
             android:screenOrientation="landscape" />
         <activity android:name=".activity.RecycleActivity"/>
+        <activity android:name=".activity.RXCodeActivity"/>
     </application>
 
 </manifest>
