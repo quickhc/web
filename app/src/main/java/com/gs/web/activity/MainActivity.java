@@ -56,7 +56,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, RXCodeActivity.class);
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });

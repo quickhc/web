@@ -1,6 +1,8 @@
 package com.gs.web.activity;
 
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.gs.web.R;
@@ -21,8 +23,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @ViewInject(R.id.tv_title)
     private TextView tv_title;
 
+    @ViewInject(R.id.et_username)
+    private EditText et_username;
+    @ViewInject(R.id.et_password)
+    private EditText et_password;
+
     @ViewInject(R.id.btn_login)
     private TextView btn_login;
+    @ViewInject(R.id.tv_fot)
+    private TextView tv_fot;
 
     @Override
     protected void setContentView() {
@@ -31,7 +40,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     protected void initView() {
-        tv_title.setText("登录");
+        et_username.setHintTextColor(getResources().getColor(R.color.text_color));
+        et_password.setHintTextColor(getResources().getColor(R.color.text_color));
     }
 
     @Override
@@ -43,6 +53,14 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 finish();
             }
         });
+
+        tv_fot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toActivity(WebActivity.class);
+            }
+        });
+
     }
 
     @Override

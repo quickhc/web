@@ -36,7 +36,7 @@
             android:screenOrientation="landscape"/>
         <activity android:name=".activity.RXCodeActivity"/>
         <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.SecondActivity"/>
+        <activity android:name=".activity.WebActivity"/>
     </application>
 
 </manifest>
