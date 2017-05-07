@@ -1,6 +1,7 @@
 package com.gs.web.app;
 
 import com.gslibrary.app.SAppLication;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /*********************************************
  ***                                       ***
@@ -16,5 +17,7 @@ public class WebAppLication extends SAppLication {
         setXutilsDebug(true);
 
 //        Bugsee.launch(this, "d58d8ee7-23b7-48a0-b7b3-adb293670acb");
+
+        ZXingLibrary.initDisplayOpinion(this);
     }
 }

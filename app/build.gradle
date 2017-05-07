@@ -33,11 +33,13 @@ dependencies {
     compile 'com.blankj:utilcode:1.4.1'
     //
     compile 'com.orhanobut:logger:1.15'
+
+    compile 'cn.yipianfengye.android:zxing-library:2.1'
     //
-    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
-    compile 'com.nineoldandroids:library:2.4.0'
+//    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
+//    compile 'com.nineoldandroids:library:2.4.0'
     //
 //    compile 'com.bugsee:bugsee-android:+'
     //
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+//    compile 'com.android.support:recyclerview-v7:25.3.1'
 }
