@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "com.gs.web"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 21
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -29,12 +29,14 @@ dependencies {
     testCompile 'junit:junit:4.12'
 
     compile(group: 'com.gslibrary', name: 'gslibrary', version: '0.2.1', ext: 'aar', classifier: '')
-    //
+    //工具
     compile 'com.blankj:utilcode:1.4.1'
-    //
+    //日志
     compile 'com.orhanobut:logger:1.15'
-
+    //二维码
     compile 'cn.yipianfengye.android:zxing-library:2.1'
+    //沉浸式状态栏
+    compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
     //
 //    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
 //    compile 'com.nineoldandroids:library:2.4.0'

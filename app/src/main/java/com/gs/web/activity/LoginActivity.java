@@ -1,10 +1,11 @@
 package com.gs.web.activity;
 
+import android.os.Build;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.flyco.systembar.SystemBarHelper;
 import com.gs.web.R;
 import com.gs.web.presenter.LoginPresenter;
 import com.gs.web.view.LoginView;
@@ -36,6 +37,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     @Override
     protected void setContentView() {
         x.view().inject(this);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (SystemBarHelper.isMIUI6Later() || SystemBarHelper.isFlyme4Later() || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                SystemBarHelper.setStatusBarDarkMode(this);
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.tit_color), 0);
+            } else {
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.tit_color), 0);
+            }
+        }
     }
 
     @Override

@@ -5,14 +5,14 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <!--标题-->
     <color name="tit_color">#30425a</color>
     <!--登录页面-->
     <color name="button_color">#009a9a</color>
     <!--二维码-->
     <color name="scan_corner_color">#0effc2</color>
-
+    <!--字体颜色-->
     <color name="text_color">#b2b9c3</color>
-
 
 </resources>
