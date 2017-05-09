@@ -70,7 +70,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 toActivity(WebActivity.class);
             }
         });
-
     }
 
     @Override
