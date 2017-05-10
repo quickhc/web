@@ -1,5 +1,6 @@
 package com.gs.web.activity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.view.View;
 import android.widget.EditText;
@@ -52,6 +53,9 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     protected void initView() {
         et_username.setHintTextColor(getResources().getColor(R.color.text_color));
         et_password.setHintTextColor(getResources().getColor(R.color.text_color));
+
+        et_username.setText("admin");
+        et_password.setText("piglet529");
     }
 
     @Override
@@ -59,8 +63,7 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toActivity(MainActivity.class);
-                finish();
+                checkUserName();
             }
         });
 
@@ -98,12 +101,20 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     }
 
     @Override
-    public void LoginButton() {
-
+    public void checkUserName() {
+        presenter.login(et_username.getText().toString(), et_password.getText().toString());
     }
 
     @Override
-    public void checkUserName() {
+    public void show(String message) {
+        toastShow(message);
+    }
 
+    @Override
+    public void toMain(String username) {
+        Intent intent = new Intent();
+        intent.putExtra("user", username);
+        toActivity(intent, WebActivity.class);
+        finish();
     }
 }

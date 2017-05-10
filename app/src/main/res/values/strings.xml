@@ -3,4 +3,7 @@
 
     <!---->
     <string name="login">登录</string>
+    <string name="clear">clear</string>
+    <string name="save">save</string>
+
 </resources>

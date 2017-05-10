@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <div style="margin-top: 100px">
+            <input type="button" value="Screen" onclick="screen()">
+                <input type="button" value="DrawRect" onclick="drawRect()">
+        </div>
+        <script>
+        function screen () {
+            window.android.startSign();
+            window.webkit.messageHandlers.screen.postMessage({body:'screen,success'});
+        }
+        function drawRect () {
+            window.android.startQX();
+            window.webkit.messageHandlers.drawRect.postMessage({body:'drawRect,success'});
+        }
+        </script>
+    </body>
+</html>

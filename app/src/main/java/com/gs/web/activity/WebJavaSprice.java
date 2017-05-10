@@ -3,6 +3,7 @@ package com.gs.web.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.webkit.JavascriptInterface;
 
 /**
  * Created by Administrator on 2017/5/7.
@@ -11,7 +12,6 @@ import android.content.Intent;
 public class WebJavaSprice {
 
     private Context mContext;
-    private static int REQUEST_CODE = 101;
 
     public WebJavaSprice(Context mContext) {
         this.mContext = mContext;
@@ -20,9 +20,16 @@ public class WebJavaSprice {
     /**
      * 去二维码扫描界面
      */
+    @JavascriptInterface
     public void startQX() {
         Intent intent = new Intent(mContext, RXCodeActivity.class);
-        ((Activity) mContext).startActivityForResult(intent, REQUEST_CODE);
+        ((Activity) mContext).startActivityForResult(intent, 101);
+    }
+
+    @JavascriptInterface
+    public void startSign() {
+        Intent intent = new Intent(mContext, LinePathActivity.class);
+        ((Activity) mContext).startActivityForResult(intent, 102);
     }
 
 }

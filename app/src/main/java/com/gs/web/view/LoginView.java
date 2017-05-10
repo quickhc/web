@@ -8,8 +8,10 @@ import com.gslibrary.base.BaseView;
 
 public interface LoginView extends BaseView {
 
-    void LoginButton();
-
     void checkUserName();
+
+    void show(String message);
+
+    void toMain(String username);
 
 }
