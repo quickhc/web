@@ -1,4 +1,4 @@
-package com.gs.web.view;
+package com.gs.eplus.view;
 
 import com.gslibrary.base.BaseView;
 

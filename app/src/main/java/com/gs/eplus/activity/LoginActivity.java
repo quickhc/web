@@ -1,4 +1,4 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.os.Build;
@@ -7,9 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.flyco.systembar.SystemBarHelper;
-import com.gs.web.R;
-import com.gs.web.presenter.LoginPresenter;
-import com.gs.web.view.LoginView;
+import com.gs.eplus.R;
+import com.gs.eplus.presenter.LoginPresenter;
+import com.gs.eplus.view.LoginView;
 import com.gslibrary.base.BaseMvpActivity;
 
 import org.xutils.view.annotation.ContentView;

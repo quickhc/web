@@ -1,4 +1,4 @@
-package com.gs.web.weight;
+package com.gs.eplus.weight;
 
 import android.annotation.TargetApi;
 import android.graphics.drawable.ColorDrawable;
@@ -22,7 +22,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.gs.web.R;
+import com.gs.eplus.R;
 import com.gslibrary.utils.ScreenUtils;
 
 import java.lang.ref.WeakReference;

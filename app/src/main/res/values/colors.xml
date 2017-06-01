@@ -14,5 +14,6 @@
     <color name="scan_corner_color">#0effc2</color>
     <!--字体颜色-->
     <color name="text_color">#b2b9c3</color>
-
+    <!--状态栏颜色-->
+    <color name="states_color">#01BBBA</color>
 </resources>

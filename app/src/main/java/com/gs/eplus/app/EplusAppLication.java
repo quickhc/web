@@ -1,4 +1,4 @@
-package com.gs.web.app;
+package com.gs.eplus.app;
 
 import com.gslibrary.app.SAppLication;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -9,7 +9,7 @@ import com.uuzuche.lib_zxing.activity.ZXingLibrary;
  ***       Created by HC on 2017/5/3.       ***
  *********************************************/
 
-public class WebAppLication extends SAppLication {
+public class EplusAppLication extends SAppLication {
 
     @Override
     public void onCreate() {

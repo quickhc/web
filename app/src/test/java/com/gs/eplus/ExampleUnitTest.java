@@ -1,4 +1,4 @@
-package com.gs.web;
+package com.gs.eplus;
 
 import org.junit.Test;
 

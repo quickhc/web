@@ -1,17 +1,17 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gs.web.R;
+import com.flyco.systembar.SystemBarHelper;
+import com.gs.eplus.R;
 import com.gslibrary.base.BaseMvpActivity;
 import com.gslibrary.base.BasePresenter;
 import com.gslibrary.base.BaseView;
@@ -26,25 +26,24 @@ import org.xutils.x;
  */
 @ContentView(R.layout.webb_activity)
 public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseView {
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
     @ViewInject(R.id.webview)
     private WebView webview;
 
     @Override
     protected void setContentView() {
         x.view().inject(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (SystemBarHelper.isMIUI6Later() || SystemBarHelper.isFlyme4Later() || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                SystemBarHelper.setStatusBarDarkMode(this);
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            } else {
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            }
+        }
     }
 
     @Override
     protected void initView() {
-        tv_title.setText("Eplus");
-        tv_title.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);

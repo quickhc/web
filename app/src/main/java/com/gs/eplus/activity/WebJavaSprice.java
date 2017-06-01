@@ -1,4 +1,4 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.app.Activity;
 import android.content.Context;

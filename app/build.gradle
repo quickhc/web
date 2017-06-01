@@ -4,7 +4,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     defaultConfig {
-        applicationId "com.gs.web"
+        applicationId "com.gs.eplus"
         minSdkVersion 15
         targetSdkVersion 21
         versionCode 1
@@ -38,11 +38,4 @@ dependencies {
     compile 'cn.yipianfengye.android:zxing-library:2.1'
     //沉浸式状态栏
     compile "com.flyco.systembar:FlycoSystemBar_Lib:1.0.0@aar"
-    //
-//    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
-//    compile 'com.nineoldandroids:library:2.4.0'
-    //
-//    compile 'com.bugsee:bugsee-android:+'
-    //
-//    compile 'com.android.support:recyclerview-v7:25.3.1'
 }

@@ -1,4 +1,4 @@
-package com.gs.web.weight;
+package com.gs.eplus.weight;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

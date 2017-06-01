@@ -1,7 +1,7 @@
-package com.gs.web.presenter;
+package com.gs.eplus.presenter;
 
-import com.gs.web.view.MainView;
 import com.gslibrary.base.BasePresenter;
+import com.gslibrary.base.BaseView;
 
 /*********************************************
  ***                                       ***
@@ -9,11 +9,11 @@ import com.gslibrary.base.BasePresenter;
  ***       Created by HC on 2017/5/3.       ***
  *********************************************/
 
-public class MainPresenter extends BasePresenter<MainView> {
+public class LinePathPresenter extends BasePresenter<BaseView> {
+
 
     @Override
     public void onStart() {
-        mView.loadWeb("123");
-        mView.loadData();
+
     }
 }

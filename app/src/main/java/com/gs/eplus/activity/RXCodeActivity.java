@@ -1,10 +1,12 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 
-import com.gs.web.R;
+import com.flyco.systembar.SystemBarHelper;
+import com.gs.eplus.R;
 import com.gslibrary.base.BaseMvpActivity;
 import com.gslibrary.base.BasePresenter;
 import com.gslibrary.base.BaseView;
@@ -21,13 +23,20 @@ public class RXCodeActivity extends BaseMvpActivity<BasePresenter> implements Ba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_second);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (SystemBarHelper.isMIUI6Later() || SystemBarHelper.isFlyme4Later() || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                SystemBarHelper.setStatusBarDarkMode(this);
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            } else {
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            }
+        }
         initView();
     }
 
     @Override
     protected void setContentView() {
-        setContentView(R.layout.activity_second);
-
         captureFragment = new CaptureFragment();
         // 为二维码扫描界面设置定制化界面
         CodeUtils.setFragmentArgs(captureFragment, R.layout.my_camera);

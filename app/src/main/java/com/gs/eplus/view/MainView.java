@@ -1,13 +1,15 @@
-package com.gs.web.view;
+package com.gs.eplus.view;
 
 import com.gslibrary.base.BaseView;
 
 /*********************************************
  ***                                       ***
  ***                                       ***
- ***       Created by HC on 2017/5/4.       ***
+ ***       Created by HC on 2017/5/3.       ***
  *********************************************/
 
-public interface LineView extends BaseView {
+public interface MainView extends BaseView {
+
+    void loadWeb(String message);
 
 }

@@ -1,4 +1,4 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,13 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.blankj.utilcode.util.SDCardUtils;
-import com.gs.web.R;
-import com.gs.web.presenter.MainPresenter;
-import com.gs.web.view.MainView;
+import com.gs.eplus.R;
+import com.gs.eplus.presenter.MainPresenter;
+import com.gs.eplus.view.MainView;
 import com.gslibrary.base.BaseMvpActivity;
-import com.orhanobut.logger.Logger;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import org.xutils.view.annotation.ContentView;

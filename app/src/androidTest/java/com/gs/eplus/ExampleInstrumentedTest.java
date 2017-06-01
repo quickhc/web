@@ -1,4 +1,4 @@
-package com.gs.web;
+package com.gs.eplus;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,18 +1,20 @@
-package com.gs.web.activity;
+package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gs.web.R;
-import com.gs.web.http.UrlContacts;
-import com.gs.web.presenter.LinePathPresenter;
-import com.gs.web.view.LineView;
-import com.gs.web.weight.LinePathView;
+import com.flyco.systembar.SystemBarHelper;
+import com.gs.eplus.R;
+import com.gs.eplus.http.UrlContacts;
+import com.gs.eplus.presenter.LinePathPresenter;
+import com.gs.eplus.view.LineView;
+import com.gs.eplus.weight.LinePathView;
 import com.gslibrary.base.BaseMvpActivity;
 import com.orhanobut.logger.Logger;
 
@@ -50,6 +52,14 @@ public class LinePathActivity extends BaseMvpActivity<LinePathPresenter> impleme
     @Override
     public void setContentView() {
         x.view().inject(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            if (SystemBarHelper.isMIUI6Later() || SystemBarHelper.isFlyme4Later() || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                SystemBarHelper.setStatusBarDarkMode(this);
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            } else {
+                SystemBarHelper.tintStatusBar(this, getResources().getColor(R.color.states_color), 0);
+            }
+        }
     }
 
     @Override
