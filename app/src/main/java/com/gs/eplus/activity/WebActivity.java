@@ -29,6 +29,7 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
     @ViewInject(R.id.webview)
     private WebView webview;
 
+    private LoadingProgress loadingProgress;
     @Override
     protected void setContentView() {
         x.view().inject(this);
@@ -52,7 +53,7 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
 
-        webview.loadUrl("http://122.114.146.13/phone/appindex.action?user.usercode=" + getIntent().getStringExtra("user"));
+        webview.loadUrl("http://122.114.146.13/phone/appindex.action?user.usercode=" + getIntent().getStringExtra("user") + "&token=" + getIntent().getStringExtra("token"));
 
 //        webview.loadUrl("file:///android_asset/Main.html");
 
@@ -68,16 +69,15 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 //设定加载开始的操作
+                showLoading();
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                dismissLoading();
             }
         });
-    }
-
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK) && webview.canGoBack()) {
-            webview.goBack(); //goBack()表示返回WebView的上一页面
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -85,6 +85,13 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
         super.onResume();
         //激活WebView为活跃状态，能正常执行网页的响应
         webview.onResume();
+        webview.getSettings().setJavaScriptEnabled(true);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        webview.getSettings().setJavaScriptEnabled(false);
     }
 
     @Override
@@ -103,12 +110,15 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
 
     @Override
     public void showLoading() {
-
+        loadingProgress=new LoadingProgress(this);
+        loadingProgress.showDialog("Loading...");
     }
 
     @Override
     public void dismissLoading() {
-
+        if(loadingProgress.isShowing()){
+            loadingProgress.dismissDialog();
+        }
     }
 
     @Override
@@ -146,5 +156,26 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
             String imageUrl = data.getStringExtra("imageUrl");
             webview.loadUrl("javascript:tobacksignpath('" + imageUrl + "')");
         }
+    }
+
+    private long exitTime = 0;
+
+    /**
+     * 双击退出函数
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) < 500) {
+//                Toast toast = Toast.makeText(mContext, "再按一次退出程序", Toast.LENGTH_SHORT);
+//                toast.cancel();
+                finishAll();
+            } else {
+                webview.goBack(); //goBack()表示返回WebView的上一页面
+                exitTime = System.currentTimeMillis();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

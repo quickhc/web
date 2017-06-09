@@ -12,6 +12,6 @@ public interface LoginView extends BaseView {
 
     void show(String message);
 
-    void toMain(String username);
+    void toMain(String username,String token);
 
 }

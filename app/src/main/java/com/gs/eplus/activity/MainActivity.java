@@ -25,7 +25,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @ViewInject(R.id.tv_qianming)
     private TextView tv_qianming;
 
-
     private MainPresenter mainPresenter;
     public static int REQUEST_CODE = 101;
 
@@ -62,7 +61,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         /**
          * 处理二维码扫描结果
          */

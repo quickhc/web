@@ -1,6 +1,7 @@
 package com.gs.eplus.presenter;
 
 import android.content.Context;
+import android.os.Handler;
 
 import com.gs.eplus.http.RMParams;
 import com.gs.eplus.http.UrlContacts;
@@ -22,13 +23,11 @@ import org.xutils.x;
 public class LoginPresenter extends BasePresenter<LoginView> {
     @Override
     public void onStart() {
-        boolean login = isLogin(x.app().getBaseContext());
-        if (login) {
-            login((String) SPUtils.get(x.app().getBaseContext(), "usercode", ""), (String) SPUtils.get(x.app().getBaseContext(), "password", ""));
-        }
+        loginAgain();
     }
 
     public void login(final String usercode, final String password) {
+        mView.showLoading();
         XutilsHttp.getInstance().post(UrlContacts.login, new RMParams().login(usercode, password), new XCallBack() {
             @Override
             public void onFail(String s) {
@@ -45,8 +44,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         SPUtils.put(x.app().getBaseContext(), "isLogin", true);
                         SPUtils.put(x.app().getBaseContext(), "usercode", usercode);
                         SPUtils.put(x.app().getBaseContext(), "password", password);
-
-                        mView.toMain(usercode);
+                        String token = jsonObject.getString("token");
+                        mView.toMain(usercode, token);
                     } else {
                         mView.show("登录失败");
                     }
@@ -60,6 +59,18 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
     public boolean isLogin(Context mContext) {
         return (Boolean) SPUtils.get(mContext, "isLogin", false);
+    }
+
+    public void loginAgain() {
+        boolean login = isLogin(x.app().getBaseContext());
+        if (login) {
+            //延时显示登录界面
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    login((String) SPUtils.get(x.app().getBaseContext(), "usercode", ""), (String) SPUtils.get(x.app().getBaseContext(), "password", ""));
+                }
+            }, 500);
+        }
     }
 
 }

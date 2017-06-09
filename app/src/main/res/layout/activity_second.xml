@@ -1,17 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:id="@+id/activity_second"
-             android:layout_width="match_parent"
+    android:id="@+id/activity_second"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:clipToPadding="true"
-    android:fitsSystemWindows="true"
-             android:layout_height="match_parent">
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/states_color"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_height="48dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="二维码扫描"
+            android:textColor="@color/white"
+            android:layout_centerInParent="true"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/fl_my_container"
-        android:layout_marginTop="48dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        ></FrameLayout>
+        android:layout_marginTop="48dp"
+        android:visibility="visible"></FrameLayout>
 
 </FrameLayout>

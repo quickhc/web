@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.webkit.JavascriptInterface;
 
+import com.gslibrary.utils.SPUtils;
+
 /**
  * Created by Administrator on 2017/5/7.
  */
@@ -30,6 +32,16 @@ public class WebJavaSprice {
     public void startSign() {
         Intent intent = new Intent(mContext, LinePathActivity.class);
         ((Activity) mContext).startActivityForResult(intent, 102);
+    }
+
+    @JavascriptInterface
+    public void popBack() {
+        //清除缓存
+        SPUtils.clear(mContext,"present_user");
+        //跳转页面
+        Intent intent = new Intent(mContext, LoginActivity.class);
+        ((Activity) mContext).startActivity(intent);
+        ((Activity) mContext).finish();
     }
 
 }

@@ -2,9 +2,11 @@ package com.gs.eplus.activity;
 
 import android.content.Intent;
 import android.os.Build;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.flyco.systembar.SystemBarHelper;
 import com.gs.eplus.R;
@@ -22,8 +24,6 @@ import org.xutils.x;
 
 @ContentView(R.layout.login_activity)
 public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements LoginView {
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
 
     @ViewInject(R.id.et_username)
     private EditText et_username;
@@ -34,6 +34,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     private TextView btn_login;
     @ViewInject(R.id.tv_fot)
     private TextView tv_fot;
+
+    private LoadingProgress loadingProgress;
 
     @Override
     protected void setContentView() {
@@ -54,8 +56,8 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
         et_username.setHintTextColor(getResources().getColor(R.color.text_color));
         et_password.setHintTextColor(getResources().getColor(R.color.text_color));
 
-        et_username.setText("admin");
-        et_password.setText("piglet529");
+//        et_username.setText("admin");
+//        et_password.setText("piglet529");
     }
 
     @Override
@@ -66,7 +68,6 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
                 checkUserName();
             }
         });
-
         tv_fot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,12 +83,15 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
 
     @Override
     public void showLoading() {
-
+        loadingProgress=new LoadingProgress(this);
+        loadingProgress.showDialog("Loading...");
     }
 
     @Override
     public void dismissLoading() {
-
+        if (loadingProgress.isShowing()) {
+            loadingProgress.dismissDialog();
+        }
     }
 
     @Override
@@ -111,10 +115,32 @@ public class LoginActivity extends BaseMvpActivity<LoginPresenter> implements Lo
     }
 
     @Override
-    public void toMain(String username) {
+    public void toMain(String username, String token) {
+        dismissLoading();
         Intent intent = new Intent();
         intent.putExtra("user", username);
+        intent.putExtra("token", token);
         toActivity(intent, WebActivity.class);
         finish();
+    }
+
+    private long exitTime = 0;
+
+    /**
+     * 双击退出函数
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Toast toast = Toast.makeText(mContext, "再按一次退出程序", Toast.LENGTH_SHORT);
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - exitTime) > 2000) {
+                exitTime = System.currentTimeMillis();
+            } else {
+                toast.cancel();
+                finishAll();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }
