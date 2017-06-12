@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.flyco.systembar.SystemBarHelper;
 import com.gs.eplus.R;
+import com.gs.eplus.http.RMParams;
+import com.gs.eplus.http.UrlContacts;
 import com.gslibrary.base.BaseMvpActivity;
 import com.gslibrary.base.BasePresenter;
 import com.gslibrary.base.BaseView;
@@ -30,6 +32,7 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
     private WebView webview;
 
     private LoadingProgress loadingProgress;
+
     @Override
     protected void setContentView() {
         x.view().inject(this);
@@ -53,7 +56,7 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
         webSettings.setLoadsImagesAutomatically(true); //支持自动加载图片
         webSettings.setDefaultTextEncodingName("utf-8");//设置编码格式
 
-        webview.loadUrl("http://122.114.146.13/phone/appindex.action?user.usercode=" + getIntent().getStringExtra("user") + "&token=" + getIntent().getStringExtra("token"));
+        webview.loadUrl(UrlContacts.base_url + "/appindex.action?user.usercode=" + getIntent().getStringExtra("user") + "&token=" + getIntent().getStringExtra("token"));
 
 //        webview.loadUrl("file:///android_asset/Main.html");
 
@@ -110,13 +113,13 @@ public class WebActivity extends BaseMvpActivity<BasePresenter> implements BaseV
 
     @Override
     public void showLoading() {
-        loadingProgress=new LoadingProgress(this);
+        loadingProgress = new LoadingProgress(this);
         loadingProgress.showDialog("Loading...");
     }
 
     @Override
     public void dismissLoading() {
-        if(loadingProgress.isShowing()){
+        if (loadingProgress.isShowing()) {
             loadingProgress.dismissDialog();
         }
     }

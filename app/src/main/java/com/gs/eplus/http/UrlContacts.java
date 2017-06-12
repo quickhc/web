@@ -8,7 +8,9 @@ package com.gs.eplus.http;
 
 public class UrlContacts {
 
-    private static final String base_url = "http://122.114.146.13/phone";
+//    private static final String base_url = "http://122.114.146.13/phone";
+
+    public static final String base_url = "http://eplus.7tech.sg/phone";
 
     public static final String login = base_url + "/applogin.action";
 
