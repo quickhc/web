@@ -6,7 +6,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.gs.eplus.weight.LinePathView
+    <com.gs.jeve.weight.LinePathView
         android:id="@+id/line_path"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

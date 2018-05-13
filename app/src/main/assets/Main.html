@@ -17,6 +17,11 @@
             window.android.startQX();
             window.webkit.messageHandlers.drawRect.postMessage({body:'drawRect,success'});
         }
+        //条码或者二维码回调
+	    function tobackbarcode(code){
+	    	screen();
+	    }
         </script>
     </body>
 </html>
+
